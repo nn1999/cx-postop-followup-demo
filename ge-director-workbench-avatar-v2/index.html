@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>葛主任工作台</title><style>
+:root {
+  --cx-orange: #ff4b0b;
+  --cx-orange-2: #ff6b1a;
+  --cx-orange-soft: #fff0e8;
+  --cx-paper: #fffaf6;
+  --cx-ink: #171717;
+  --cx-muted: #77716e;
+  --cx-line: #f1ddd1;
+  --cx-success: #288b68;
+  --cx-success-soft: #e9f5ef;
+  --cx-font: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --cx-shadow-card: 0 8px 25px rgba(110, 65, 40, 0.06);
+  --cx-shadow-float: 0 12px 34px rgba(83, 50, 32, 0.18);
+  --cx-gradient: linear-gradient(90deg, #ff650f, #ff3e05);
+  --cx-gradient-icon: linear-gradient(145deg, #ff8d50, #ff4b0b);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--cx-font);
+  color: var(--cx-ink);
+  background: #f7f1eb;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.cx-stage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.cx-phone {
+  position: relative;
+  width: 430px;
+  height: 880px;
+  overflow: hidden;
+  border: 8px solid #211c19;
+  border-radius: 42px;
+  background: var(--cx-paper);
+  box-shadow: 0 30px 86px rgba(73, 44, 29, 0.25);
+}
+
+.cx-screen {
+  height: 100%;
+  overflow-y: auto;
+  padding: 14px 14px 104px;
+  background: var(--cx-paper);
+}
+
+.cx-card {
+  border: 1px solid var(--cx-line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--cx-shadow-card);
+}
+
+.cx-pill {
+  border: 1px solid var(--cx-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.cx-primary {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 18px;
+  color: #fff;
+  background: var(--cx-gradient);
+  box-shadow: 0 10px 22px rgba(255, 75, 11, 0.22);
+  font-weight: 800;
+}
+
+.cx-icon-orb {
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: var(--cx-orange);
+  background: var(--cx-orange-soft);
+}
+
+.cx-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 58px;
+  border-bottom: 1px solid #eadbd3;
+}
+
+.cx-tabs button {
+  position: relative;
+  border: 0;
+  color: #747272;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cx-tabs button[aria-selected="true"] {
+  color: var(--cx-orange);
+}
+
+.cx-tabs button[aria-selected="true"]::after {
+  position: absolute;
+  right: 27%;
+  bottom: -1px;
+  left: 27%;
+  height: 4px;
+  border-radius: 9px;
+  background: var(--cx-orange);
+  content: "";
+}
+
+.cx-composer {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  z-index: 8;
+  min-height: 64px;
+  border-radius: 32px;
+  background: #fff;
+  box-shadow: var(--cx-shadow-float);
+}
+
+@media (max-width: 520px) {
+  .cx-stage {
+    padding: 0;
+  }
+
+  .cx-phone {
+    width: 100%;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+</style>
+  <style>
+  :root{--o:#cc5c3a;--paper:#f5f0e8;--surface:#faf7f2;--line:#e8e3d9;--ink:#2c2c2a;--muted:#888780;--soft:#f8e3dc;--green:#288b68;--yellow:#a96d10;--red:#b8422d}body{background:var(--paper)}.cx-screen{padding:0;background:linear-gradient(180deg,#fffdfa,#faf5ef)}.screen{display:none;min-height:100%;padding:13px 15px 30px}.screen.active{display:block}.top{height:48px;display:flex;align-items:center;justify-content:space-between}.top h1{margin:0;font:800 20px/1.1 "Noto Serif SC","Source Han Serif SC",serif}.back,.link{border:0;background:none}.back{font-size:31px;line-height:1;color:var(--ink)}.link{color:var(--ink);font-size:12px}#home .top{position:relative;justify-content:flex-start}#home .top h1{position:absolute;left:50%;transform:translateX(-50%)}.under{display:block;width:64px;height:4px;margin:8px auto 13px;border-radius:99px;background:var(--o)}.hero{display:flex;align-items:center;gap:11px;min-height:112px;padding:13px;overflow:hidden;border:1px solid var(--line);border-radius:21px;background:var(--surface);box-shadow:0 8px 25px rgba(88,67,50,.06)}.hero.hero-text{min-height:94px;padding:16px}.hero .director-avatar{align-self:flex-end;flex:none;width:90px;height:104px;object-fit:cover;object-position:50% 18%;background:transparent;filter:drop-shadow(0 5px 7px rgba(82,56,38,.08))}.hero div{min-width:0}.hero h2{margin:4px 0;font:800 19px/1.25 "Noto Serif SC","Source Han Serif SC",serif}.hero p{margin:0;color:var(--muted);font-size:11px;line-height:1.55}.tag{display:inline-block;border-radius:99px;padding:5px 8px;color:var(--o);background:var(--soft);font-size:10px;font-weight:800}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0}.stats.two{grid-template-columns:repeat(2,1fr)}.stat{min-height:107px;padding:9px 5px;border:1px solid var(--line);border-radius:18px;background:var(--surface);text-align:center;box-shadow:0 6px 17px rgba(88,67,50,.04)}button.stat{font:inherit;color:inherit}.stat b{display:block;margin-top:5px;font-size:25px;line-height:1}.stat span{display:block;margin-top:5px;font-size:11px;font-weight:800}.stat small{display:block;margin-top:3px;color:var(--muted);font-size:8px}.stat.open{border-color:#e9b8a9;background:#fff9f6}.home-panel{display:none;margin:-3px 0 14px}.home-panel.show{display:block}.home-panel .panel-title{display:flex;justify-content:space-between;align-items:center;padding:13px 14px 4px;font:800 14px/1.3 "Noto Serif SC","Source Han Serif SC",serif}.home-panel .panel-title small{font:500 10px/1.4 "PingFang SC",sans-serif;color:var(--muted)}.home-review-answer{display:block;margin-top:3px;color:var(--muted);font-size:10px;line-height:1.5}.mascot{display:grid;place-items:center;width:37px;height:37px;margin:auto;border-radius:14px;color:var(--o);background:var(--soft);font-size:19px;font-weight:800}.heading{display:flex;align-items:center;justify-content:space-between;margin:17px 3px 9px;font-size:16px;font-weight:800}.heading button{border:0;background:none;color:var(--o);font-size:12px;font-weight:700}.card{border:1px solid var(--line);border-radius:20px;background:var(--surface);box-shadow:0 7px 19px rgba(88,67,50,.04)}.list{padding:5px 12px}.patient{display:flex;align-items:center;gap:9px;width:100%;padding:10px 0;border:0;border-bottom:1px solid #eee7df;background:none;text-align:left}.patient:last-child{border:0}.avatar{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:13px;color:#423832;background:#f9e8df;font-weight:800}.copy{flex:1;min-width:0}.patient b{font-size:13px}.patient small{display:block;margin-top:4px;color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.badge{border-radius:9px;padding:6px 7px;font-size:10px;font-style:normal;font-weight:800;white-space:nowrap}.r1{color:#a83b2a;background:#fbe8e3}.r2{color:#96600e;background:#fff1d7}.green{color:var(--green);background:#e9f5ef}.yellow{color:#98620c;background:#fff3df}.shortcut{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.shortcut button{padding:12px;border:1px solid var(--line);border-radius:17px;background:var(--surface);text-align:left}.quick-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:14px;color:var(--o);background:var(--soft)}.quick-icon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.shortcut b{display:block;margin-top:7px;font-size:13px}.shortcut small{display:block;margin-top:3px;color:var(--muted);font-size:10px}.section{margin:12px 0;padding:14px}.section h3{margin:0 0 9px;font:800 15px/1.3 "Noto Serif SC","Source Han Serif SC",serif}.section p{margin:0;color:var(--muted);font-size:11px;line-height:1.65}.risk{padding:10px;border-radius:14px;color:#813c30;background:#fcf0ec;font-size:12px;line-height:1.55}.data-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.datum{padding:10px 4px;border:1px solid var(--line);border-radius:13px;text-align:center}.datum b{display:block;font-size:16px}.datum span{display:block;margin-top:3px;color:var(--muted);font-size:9px}.chart{width:100%;height:178px;margin:7px 0;border-radius:15px;background:#fffdfb}.record{padding:9px 0;border-bottom:1px dashed #e9dfd6}.record:last-child{border:0}.record b{font-size:12px}.record p{margin-top:4px}.field{margin:10px 0}.field label{display:block;margin-bottom:5px;color:var(--muted);font-size:10px}.field textarea,.field input{width:100%;border:1px solid var(--line);border-radius:13px;padding:10px;background:#fffdfb;font:inherit;font-size:12px;outline-color:var(--o)}.field textarea{height:70px;resize:none}.primary,.secondary{width:100%;margin-top:10px;border-radius:16px;padding:13px;font-weight:800}.primary{border:0;color:white;background:var(--o)}.secondary{border:1px solid var(--line);color:var(--o);background:#fffdfb}.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px}.actions button{border:1px solid var(--line);border-radius:12px;padding:9px 3px;background:#fffdfb;font-size:10px}.actions .confirm{border-color:#efc2b4;color:#a23a2b;background:#fcf1ed}.actions .exclude{color:var(--green);background:#eff8f3}.qa{padding:10px;border-radius:13px;margin:9px 0;font-size:12px;line-height:1.55}.question{background:#fcf0ec}.answer{background:#f4f1ed}.seg{display:flex;gap:6px;margin:9px 0}.seg button{flex:1;border:1px solid var(--line);border-radius:10px;padding:8px 3px;background:#fffdfb;color:var(--muted);font-size:11px}.seg button.pick{border-color:var(--o);color:var(--o);background:var(--soft);font-weight:800}.voice-row{display:flex;gap:8px;align-items:stretch}.voice-row textarea{flex:1}.mic{width:47px;border:1px solid #e9b3a1;border-radius:13px;color:var(--o);background:#fff4ef;font-size:20px}.metrics{display:flex;gap:7px;overflow:auto;margin:3px 0 11px}.metrics button,.chips button{min-width:70px;border:1px solid var(--line);border-radius:99px;padding:8px 11px;background:#fffdfb;color:var(--muted);font-size:11px;font-weight:700}.metrics button.on,.chips button.on{border-color:var(--o);color:white;background:var(--o)}.check-patient{display:flex;align-items:center;gap:9px;padding:9px 0;border-bottom:1px dashed #e9dfd6;font-size:12px}.check-patient:last-child{border:0}.check-patient input{accent-color:var(--o)}.check-patient small{margin-left:auto;color:var(--muted);font-size:10px}.template{display:flex;gap:6px;overflow:auto;margin:8px 0}.template button{min-width:max-content;border:1px solid var(--line);border-radius:99px;padding:7px 9px;color:var(--o);background:#fff7f3;font-size:10px}.recording{padding:9px;border-radius:12px;color:#805f35;background:#fbf2e5;font-size:10px;line-height:1.55}.audio-player{display:none;width:100%;margin-top:8px}.table-row{display:grid;grid-template-columns:58px 1fr;gap:8px;padding:10px 0;border-bottom:1px dashed #e9dfd6;font-size:11px}.table-row:last-child{border:0}.table-row b{color:var(--o)}.log-kind{display:inline-block;margin-bottom:3px;border-radius:8px;padding:3px 6px;font-size:9px;font-weight:800}.log-system{color:#806017;background:#fff1d4}.log-reply{color:#a63d2b;background:#fbe8e3}.log-action{color:var(--green);background:#e9f5ef}.review-row{display:flex;align-items:center;gap:9px;width:100%;padding:11px 0;border:0;border-bottom:1px solid #eee7df;background:none;text-align:left}.review-row:last-child{border:0}.review-index{display:grid;place-items:center;flex:none;width:30px;height:30px;border-radius:11px;color:var(--o);background:var(--soft);font:800 13px "Noto Serif SC",serif}.review-row small{display:block;margin-top:4px;color:var(--muted);font-size:10px}.review-row .badge{margin-left:auto}.compliance{margin:8px 0 2px;padding:10px;border:1px solid #eadbd3;border-radius:13px;background:#fffaf6;font-size:10px;line-height:1.55}.compliance b{display:block;margin-bottom:3px;font-size:11px}.compliance.ok{color:#287657;background:#eff8f3;border-color:#cfe7da}.compliance.warn{color:#964534;background:#fdf0ec;border-color:#ecc9bd}.compliance button{width:100%;margin-top:7px;border:1px solid #df9b88;border-radius:10px;padding:7px;color:var(--o);background:#fffaf6;font-size:10px;font-weight:800}.modal-mask{display:none;position:absolute;z-index:10;inset:0;place-items:center;padding:22px;background:rgba(50,34,25,.35)}.modal-mask.show{display:grid}.modal{width:100%;padding:22px;border-radius:23px;background:#fffdfb;text-align:center}.modal i{display:grid;place-items:center;width:52px;height:52px;margin:auto;border-radius:50%;color:var(--o);background:var(--soft);font-style:normal;font-size:23px}.modal h3{margin:11px 0 6px}.modal p{margin:0 0 15px;color:var(--muted);font-size:12px;line-height:1.55}.modal button{width:100%;border:0;border-radius:14px;padding:12px;color:white;background:var(--o);font-weight:800}.disclaimer{margin-top:12px;color:#9b7b66;font-size:10px;line-height:1.55}@media(max-width:420px){.screen{padding-left:14px;padding-right:14px}.top h1{font-size:19px}.hero{min-height:96px}.hero .director-avatar{width:82px;height:94px}.hero h2{font-size:18px}}
+  .queue-search{position:relative;margin:12px 0 9px}.queue-search span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--o);font-size:16px}.queue-search input{width:100%;border:1px solid var(--line);border-radius:14px;padding:11px 12px 11px 34px;background:#fffdfb;font:inherit;font-size:12px;outline-color:var(--o)}.queue-selectbar{display:flex;align-items:center;justify-content:space-between;margin:10px 3px 7px;color:var(--muted);font-size:11px}.queue-selectbar button{min-height:36px;border:1px solid #e9b3a1;border-radius:11px;padding:7px 10px;color:var(--o);background:#fff7f3;font-size:11px;font-weight:800}.queue-recipients{margin-top:9px;max-height:132px;overflow:auto}.queue-patient,.preop-card{position:relative}.queue-patient .patient,.preop-card .patient{padding-right:68px}.preop-card{padding:7px 0 12px;border-bottom:1px dashed #e9dfd6}.preop-card:last-child{border:0}.preop-card .patient{border-bottom:0}.procedure-box{margin:0 0 0 47px;padding:10px;border:1px solid #eadbd3;border-radius:13px;background:#fffaf6}.procedure-box label{display:block;margin-bottom:6px;color:var(--muted);font-size:10px}.procedure-box select{width:100%;min-height:39px;border:1px solid var(--line);border-radius:10px;padding:8px;background:#fffdfb;color:var(--ink);font:12px "PingFang SC",sans-serif;outline-color:var(--o)}.procedure-box button{width:100%;min-height:40px;margin-top:8px;border:0;border-radius:10px;color:white;background:var(--o);font-size:11px;font-weight:800}.procedure-box button.done{color:var(--green);background:#e9f5ef;border:1px solid #cfe7da}.procedure-note{display:block;margin-top:7px;color:var(--green);font-size:10px;line-height:1.45}.queue-empty{padding:24px 8px;color:var(--muted);font-size:12px;text-align:center}.chat-entry{position:absolute;top:17px;right:0;z-index:1;min-width:58px;min-height:30px;margin:0;border:1px solid #e9b3a1;border-radius:10px;padding:6px 7px;color:var(--o);background:#fff7f3;font-size:10px;font-weight:800}.chat-safety{margin:10px 0;padding:10px 11px;border:1px solid #eadbd3;border-radius:13px;color:#805f35;background:#fbf2e5;font-size:11px;line-height:1.55}.chat-thread{padding:12px}.chat-date{margin:2px 0 11px;color:var(--muted);font-size:10px;text-align:center}.chat-message{display:flex;flex-direction:column;max-width:82%;margin:0 0 12px}.chat-message.mine{align-items:flex-end;margin-left:auto}.chat-sender{margin:0 0 4px 3px;color:var(--muted);font-size:10px}.chat-message.mine .chat-sender{margin-right:3px}.chat-bubble{padding:10px 11px;border-radius:14px 14px 14px 4px;color:var(--ink);background:#f1ece5;font-size:12px;line-height:1.55}.chat-message.mine .chat-bubble{border-radius:14px 14px 4px 14px;color:white;background:var(--o)}.chat-time{margin:4px 3px 0;color:var(--muted);font-size:9px}.chat-compose textarea{height:76px}
+  </style>
+</head>
+<body><main class="cx-stage"><section class="cx-phone"><div class="cx-screen">
+  <section class="screen active" id="home">
+    <div class="top"><button class="back" aria-label="返回">‹</button><h1>葛主任工作台</h1></div><span class="under"></span>
+    <div class="hero"><img class="director-avatar" src="assets/ge-director-avatar.png" alt="葛主任卡通形象"><div><span class="tag">医生端</span><h2>术后随访工作台</h2><p>风险患者与 AI 回答质量统一处理</p></div></div>
+    <div class="stats two"><button class="stat" id="riskToggle" aria-expanded="false"><div class="mascot">♙</div><b id="statRisk">2</b><span>风险患者</span><small>点击展开今日待办</small></button><button class="stat" id="reviewToggle" aria-expanded="false"><div class="mascot">AI</div><b id="statReview">4</b><span>抽检回答质量</span><small>点击查看 4 条抽检样本</small></button></div>
+    <div class="home-panel" id="homeRiskPanel"><div class="card"><div class="panel-title"><span>今日待办 · 风险队列</span><small>R1 / R2</small></div><div class="list" id="riskTodo"></div></div></div>
+    <div class="home-panel" id="homeReviewPanel"><div class="card"><div class="panel-title"><span>抽检回答质量</span><small>2 条需优化 · 2 条良好</small></div><div class="list" id="homeReviewList"></div></div></div>
+    <div class="heading"><span>快捷入口</span></div><div class="shortcut">
+      <button data-go="queue"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 20c.5-4 2.5-6 6-6s5.5 2 6 6M15 15c3 0 4.7 1.7 5 5"/></svg></span><b>患者队列</b><small>术前确认与分组查看</small></button>
+      <button data-go="board"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18V11M10 18V6M16 18v-9M22 18V4"/><path d="M2 20h21"/></svg></span><b>恢复看板</b><small>可切换恢复指标</small></button>
+      <button data-go="log"><span class="quick-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/><path d="m4 8 1 1 2-2"/></svg></span><b>处理日志</b><small>系统与团队留痕</small></button>
+    </div><p class="disclaimer">患者、消息、指标均为虚构 Demo 数据，不输出诊疗建议或真实推送。</p>
+  </section>
+
+  <section class="screen" id="detail"><div class="top"><button class="back" data-go="home">‹</button><h1>风险患者详情</h1><button class="link" data-go="log">处理日志</button></div><span class="under"></span>
+    <div class="hero hero-text"><div><span class="tag" id="detailCode"></span><h2 id="detailName"></h2><p id="detailProcedure"></p></div></div>
+    <div class="card section"><h3>今日风险摘要 <em class="badge" id="riskLabel"></em></h3><div class="risk" id="riskSummary"></div><div class="data-grid" id="detailData"></div></div>
+    <div class="card section"><h3>关键恢复指标趋势</h3><svg class="chart" id="detailChart" viewBox="0 0 340 178"></svg><p id="detailChartNote"></p></div>
+    <div class="card section"><h3>患者原始记录</h3><div id="detailRecords"></div></div>
+    <div class="card section"><h3>卢主任团队回复</h3><div class="field"><label>文字回复（同步至患者端模拟会话）</label><textarea id="replyText"></textarea></div><div class="compliance ok" id="replyCompliance"><b>AI 合规审核：表述可发送</b><span>避免远程诊断、处方/用药指导及确定性结论。</span></div><button class="primary" id="sendReply">发送卢主任团队回复</button><div class="actions"><button class="confirm" id="confirmComp">确认并发症</button><button class="exclude" id="excludeComp">排除并发症</button><button id="observe">继续观察</button></div></div>
+  </section>
+
+  <section class="screen" id="review"><div class="top"><button class="back" data-go="home">‹</button><h1>抽检回答质量</h1><button class="link" data-go="home">返回工作台</button></div><span class="under"></span>
+    <div class="hero"><img class="director-avatar" src="assets/ge-director-avatar.png" alt="葛主任卡通形象"><div><span class="tag">每日定时抽检</span><h2>AI 回答质量</h2><p>共 <span id="reviewHeroCount">4</span> 条：2 条需优化、2 条良好</p></div></div><div class="card list" id="reviewList"></div>
+  </section>
+
+  <section class="screen" id="reviewDetail"><div class="top"><button class="back" data-go="review">‹</button><h1>回答复核</h1><button class="link" data-go="home">返回工作台</button></div><span class="under"></span>
+    <div class="card section"><span class="tag" id="reviewSubject"></span><div class="qa question"><b>患者问题：</b><span id="reviewQuestion"></span></div><div class="qa answer"><b>Agent 原回答：</b><span id="reviewAnswer"></span></div><h3 style="margin-top:15px">主标签</h3><div class="seg" id="mainTags"><button data-tag="正确">正确</button><button data-tag="部分正确">部分正确</button><button data-tag="错误">错误</button></div><div class="field"><label>正确回答</label><div class="voice-row"><textarea id="correctText"></textarea><button class="mic" id="answerMic" title="语音输入正确回答" aria-label="语音输入正确回答">⌁</button></div></div><div class="recording" id="answerVoiceState">点击麦克风可尝试语音转文字；浏览器不支持时将填入模拟语音转写。</div><button class="primary" id="submitReview">确认标注并提交</button></div>
+  </section>
+
+  <section class="screen" id="board"><div class="top"><button class="back" data-go="home">‹</button><h1>恢复看板</h1><button class="link" data-go="queue">患者队列</button></div><span class="under"></span>
+    <div class="hero"><img class="director-avatar" src="assets/ge-director-avatar.png" alt="葛主任卡通形象"><div><span class="tag">队列统计 · 趋势与风险</span><h2>30天恢复看板</h2><p>不同恢复指标可切换查看</p></div></div>
+    <div class="stats"><div class="stat"><div class="mascot">♙</div><b>68</b><span>累计入组</span><small>演示队列</small></div><div class="stat"><div class="mascot">⌁</div><b>28</b><span>随访中</span><small>术后1—30天</small></div><div class="stat"><div class="mascot">!</div><b id="boardRisk">2</b><span>需关注</span><small>开放R1/R2</small></div></div>
+    <div class="card section"><h3 id="metricTitle">疼痛评分趋势</h3><div class="metrics" id="metricTabs"><button class="on" data-metric="pain">疼痛评分</button><button data-metric="activity">上肢活动度</button><button data-metric="drain">乳房引流量</button><button data-metric="recovery">主观恢复</button></div><svg class="chart" id="metricChart" viewBox="0 0 340 178"></svg><p id="metricNote">NRS 疼痛评分的队列中位趋势，仅作 Demo 展示。</p></div>
+    <div class="card section"><h3>相关指标统计</h3><div class="data-grid"><div class="datum"><b>86%</b><span>30天有效随访完成率</span></div><div class="datum"><b>78%</b><span>康复训练完成率</span></div><div class="datum"><b>72</b><span>BREAST-Q 2.0术后得分</span></div></div></div>
+    <div class="card section"><h3>风险与并发症</h3><p>风险事件 <b id="riskEvents">5</b> · 疑似并发症 <b id="suspected">2</b> · 确认并发症 <b id="confirmed">0</b> · 排除 <b id="excluded">0</b></p></div>
+  </section>
+
+  <section class="screen" id="chat"><div class="top"><button class="back" data-go="queue">‹</button><h1>患者聊天</h1><button class="link" data-go="queue">患者队列</button></div><span class="under"></span>
+    <div class="hero"><img class="director-avatar" src="assets/ge-director-avatar.png" alt="葛主任卡通形象"><div><span class="tag">当前身份：葛主任</span><h2 id="chatPatientName">患者聊天</h2><p id="chatPatientMeta">医生可主动发起会话</p></div></div>
+    <div class="chat-safety">这是本地 Demo 的聊天模拟。外发前会进行 AI 合规风险审核；不会连接或发送至真实即时通讯系统。</div>
+    <div class="card chat-thread" id="chatThread"></div>
+    <div class="card section chat-compose"><h3>以“卢伶俐主任”身份发起消息</h3><div class="field"><label>消息内容（用于 AI 风险审核）</label><textarea id="chatText" placeholder="输入要发送给患者的消息…"></textarea></div><div class="compliance" id="chatCompliance" aria-live="polite"><b>AI 风险审核：等待输入</b><span>发送前将检查诊断、用药处方和绝对化表述。</span></div><button class="primary" id="sendChat">发送消息</button></div>
+  </section>
+
+  <section class="screen" id="queue"><div class="top"><button class="back" data-go="home">‹</button><h1>全部入组患者</h1><button class="link" id="clearSelection">清空选择</button></div><span class="under"></span>
+    <div class="hero"><img class="director-avatar" src="assets/ge-director-avatar.png" alt="葛主任卡通形象"><div><span class="tag">术前确认 · 分组查看</span><h2>患者队列</h2><p>在队列中筛选、勾选患者后直接发送消息</p></div></div>
+    <label class="queue-search"><span aria-hidden="true">⌕</span><input id="patientSearch" type="search" autocomplete="off" placeholder="按患者姓名搜索"></label>
+    <div class="chips" id="queueTabs"><button class="on" data-group="all">全部</button><button data-group="preop">术前患者</button><button data-group="attention">需关注</button><button data-group="following">随访中</button><button data-group="closed">已闭环</button></div><div class="queue-selectbar"><button id="selectVisible">全选当前结果</button><span>已选择 <b id="queueSelectedCount">0</b> 位患者</span></div><div class="card list" id="queueList"></div>
+    <div class="card section"><h3>群发消息</h3><p id="queueRecipientSummary">请先在队列中勾选患者。</p><div class="queue-recipients" id="queueRecipients"></div><div class="template" id="queueTemplates"><button data-template="复诊提醒">复诊提醒</button><button data-template="每日记录提醒">每日记录提醒</button><button data-template="风险安全提醒">风险安全提醒</button></div><div class="field"><label>文字内容（用于 AI 风险审核）</label><textarea id="queueText" placeholder="输入群发消息…"></textarea></div><div class="compliance" id="queueMessageCompliance" aria-live="polite"><b>AI 风险审核：等待输入</b><span>发送前将检查诊断、用药处方和绝对化表述。</span></div><button class="secondary" id="queueRecordVoice">开始录制语音</button><audio id="queueVoicePlayer" class="audio-player" controls></audio><div class="recording" id="queueVoiceState">未录制语音。语音消息也需填写或核对文字内容，作为 AI 审核依据。</div><button class="primary" id="sendQueueBroadcast">确认向已选患者推送</button></div><p class="disclaimer">本地 Demo 只在当前浏览器保存发送记录，所有“推送”均为模拟状态。</p>
+  </section>
+
+  <section class="screen" id="log"><div class="top"><button class="back" data-go="home">‹</button><h1>处理日志</h1><button class="link" data-go="home">工作台</button></div><span class="under"></span><div class="hero"><img class="director-avatar" src="assets/ge-director-avatar.png" alt="葛主任卡通形象"><div><span class="tag">结构化数据沉淀</span><h2>处理与推送日志</h2><p>系统推送、团队回复与处理动作均留痕</p></div></div><div class="card section"><div id="logs"></div></div></section>
+</div><div class="modal-mask" id="modal"><div class="modal"><i id="mIcon">✓</i><h3 id="mTitle">已保存</h3><p id="mText"></p><button id="closeModal">我知道了</button></div></div></section></main>
+<script>
+(()=>{
+ const KEY='cx-doctor-workbench-v9';
+ const patientCases={
+  p1:{name:'张女士',code:'P-0218',day:'术后第5天',group:'attention',risk:'R1',desc:'乳房引流与疼痛风险',procedure:'腔镜大网膜乳房重建术后随访',summary:'乳房引流 24 小时量较前日明显增加，颜色鲜红；患者同步反馈疼痛评分升高。',data:[['82mL','乳房引流'],['7/10','疼痛评分'],['19:24','上报时间']],records:[['患者症状','“下午开始感觉牵拉疼，疼痛比昨天明显。”'],['伤口照片','已提交 · 模拟护士审核中 · 可查看原图占位'],['AI 摘要','引流增加 + 鲜红色 + 疼痛升高，建议人工优先查看。']],reply:'已收到您的记录。请不要自行拔管；如疼痛明显加重、持续鲜红色引流或不适加重，请及时联系团队或线下就医。',chart:{ticks:['10','8','6','4','2','0'],path:'M45 34 C90 44 122 69 165 86 S255 118 322 130',unit:'NRS 疼痛评分（分）',note:'张女士疼痛评分趋势，单指标展示。'}},
+  p2:{name:'赵女士',code:'P-0246',day:'术后第9天',group:'attention',risk:'R2',desc:'乳房伤口局部炎症待确认',procedure:'右侧乳房重建术后随访',summary:'乳房伤口局部轻度红肿、少量渗出，疼痛轻度增加；患者否认发热、寒战等全身不适，需优先复核照片与局部变化。',data:[['37.4℃','体温'],['3/10','疼痛评分'],['18:10','上报时间']],records:[['患者症状','“伤口周围有点红，按压有些疼，但没有发烧、发冷或明显不舒服。”'],['伤口照片','已提交 · 局部切口轻度发红及少量渗出 · 等待团队确认'],['AI 摘要','局部炎症表现，当前未见患者自述全身症状；建议 R2 优先查看并判断后续处理。']],reply:'已收到您提交的照片和记录。请保持局部清洁干燥，不要自行挤压或涂抹药物；如红肿范围扩大、渗出增多、出现发热或明显不适，请及时联系团队或线下就医。',chart:{ticks:['40','35','30','25','20','15'],path:'M45 42 C88 50 120 64 165 78 S255 105 322 118',unit:'局部皮肤温度（℃）',note:'赵女士局部皮肤温度趋势，单指标展示。'}}
+ };
+ const patients=Object.entries(patientCases).map(([id,p])=>({id,...p})).concat([{id:'p6',name:'周女士',code:'P-0316',day:'术前第3天',group:'preop',risk:'待确认',desc:'已入组，待确认术式'},{id:'p7',name:'吴女士',code:'P-0322',day:'术前第5天',group:'preop',risk:'待确认',desc:'已入组，待确认术式'},{id:'p3',name:'李女士',code:'P-0196',day:'出院后第7天',group:'following',risk:'平稳',desc:'恢复趋势平稳'},{id:'p4',name:'王女士',code:'P-0231',day:'术后第14天',group:'following',risk:'审核中',desc:'伤口照片审核中'},{id:'p5',name:'陈女士',code:'P-0177',day:'术后第30天',group:'closed',risk:'已闭环',desc:'沟通卡已生成，团队已留痕'}]);
+ const reviewItems=[
+  {id:'q1',quality:'需优化',person:'张女士 · P-0218',q:'我的引流管连续 24 小时少于 30mL，是不是可以自己拔掉？',a:'引流量减少可能与恢复有关，建议观察变化。',correct:'不建议患者依据单日或连续少量引流自行拔管。请继续记录量、颜色、性状和局部情况，并按出院医嘱或团队通知处理；出现肿胀、疼痛加重或鲜红色引流时及时联系团队。'},
+  {id:'q2',quality:'需优化',person:'赵女士 · P-0246',q:'伤口有些发红但不发烧，需要马上自己吃消炎药吗？',a:'不发烧通常问题不大，可以先自行服用消炎药。',correct:'请勿自行加用抗菌药物。建议继续记录局部红肿、渗出、疼痛和体温，并上传清晰照片供团队评估；如症状加重或出现发热等不适，请及时联系团队或线下就医。'},
+  {id:'q3',quality:'回答良好',person:'李女士 · P-0196',q:'今天抬手有牵拉感，还要继续做活动吗？',a:'请按出院指导或团队安排循序进行活动，避免强行牵拉；疼痛明显加重或活动受限时，请暂停并联系团队确认。',correct:'请按出院指导或团队安排循序进行活动，避免强行牵拉；疼痛明显加重或活动受限时，请暂停并联系团队确认。'},
+  {id:'q4',quality:'回答良好',person:'王女士 · P-0231',q:'腹部伤口周围有一点痒，是不是感染了？',a:'局部发痒可能有多种原因，不能仅凭这一项判断。请记录是否伴随红肿、渗出、疼痛加重或发热，并按要求上传照片；症状加重时及时联系团队或线下就医。',correct:'局部发痒可能有多种原因，不能仅凭这一项判断。请记录是否伴随红肿、渗出、疼痛加重或发热，并按要求上传照片；症状加重时及时联系团队或线下就医。'}
+ ];
+ const base={homePanel:'none',reviewed:[],caseStatus:{p1:'未处理',p2:'未处理'},confirmed:0,excluded:0,riskEvents:5,suspected:2,metric:'pain',group:'all',queueQuery:'',procedures:{p6:'',p7:''},procedureConfirmed:{},selected:['p1'],voiceReady:false,chats:{p1:[{from:'patient',text:'卢主任您好，今天下午开始感觉牵拉疼，疼痛比昨天明显。',time:'19:24'},{from:'director',text:'已收到您的记录。请继续按既有医嘱记录变化；如不适加重或出现明显异常，请及时联系团队或线下就医。',time:'19:32'}],p2:[{from:'patient',text:'伤口周围有点红，按压有些疼，但没有发烧或发冷。',time:'18:10'}]},logs:[{t:'09:20',kind:'system',x:'系统推送：张女士提交乳房引流与疼痛记录，命中 R1 风险。'},{t:'09:12',kind:'system',x:'系统推送：赵女士上传伤口照片，局部发红、少量渗出，未报告全身症状，进入 R2 优先队列。'},{t:'08:00',kind:'system',x:'系统完成 4 条 AI 回答质量抽检：2 条需优化、2 条良好。'}]};
+ let s=JSON.parse(localStorage.getItem(KEY)||'null')||structuredClone(base), activePatient='p1', activeReview='q1', activeChat='p1', tag='错误', mediaRecorder=null, chunks=[], voiceUrl='';s.procedures||={p6:'',p7:''};s.procedureConfirmed||={};s.queueQuery||='';s.chats||=structuredClone(base.chats);
+ const $=x=>document.querySelector(x), $$=x=>[...document.querySelectorAll(x)]; const risks=()=>patients.filter(p=>p.group==='attention');
+ function save(){localStorage.setItem(KEY,JSON.stringify(s));render()} function go(x){$$('.screen').forEach(e=>e.classList.toggle('active',e.id===x));document.querySelector('.cx-screen').scrollTop=0} function modal(t,tx,i='✓'){$('#mTitle').textContent=t;$('#mText').textContent=tx;$('#mIcon').textContent=i;$('#modal').classList.add('show')} function addLog(kind,x){s.logs.unshift({t:new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false}),kind,x})} function badge(r){return r==='R1'?'r1':r==='R2'?'r2':r==='平稳'||r==='已闭环'?'green':'yellow'}
+ function checkReply(text){const patterns=[{test:/(诊断为|确诊|就是感染|就是炎症|并发症了|坏死|血肿)/,label:'远程诊断或确定性判断'},{test:/(吃|服用|使用).{0,8}(消炎药|抗生素|抗菌药)|开药|处方|调整用药|立即手术/,label:'远程处方、用药或治疗指示'},{test:/(不用来医院|不需要就医|无需就医|肯定没问题|一定没事)/,label:'替代线下评估的绝对化表述'}];const hit=patterns.filter(x=>x.test.test(text));return {ok:!hit.length,labels:hit.map(x=>x.label)}}
+ function compliantRewrite(){const p=patientCases[activePatient];return `已收到您的记录。我们会结合您提交的症状和资料进一步评估，请继续按既有医嘱记录变化并保持局部清洁。若不适加重、出现发热或其他明显异常，请及时联系团队或线下就医。`}
+ function queueCompliantRewrite(){return '已收到您的信息。请继续按既有医嘱记录变化；如不适加重、出现发热或其他明显异常，请及时联系团队或线下就医。'}
+ function renderQueueMessageCompliance(){const box=$('#queueMessageCompliance');if(!box)return;const text=$('#queueText').value.trim();if(!text){box.className='compliance';box.innerHTML='<b>AI 风险审核：等待输入</b><span>发送前将检查诊断、用药处方和绝对化表述。</span>';return}const result=checkReply(text);box.className=`compliance ${result.ok?'ok':'warn'}`;box.innerHTML=result.ok?'<b>AI 风险审核：表述可发送</b><span>未发现远程诊断、处方/用药指导或绝对化结论。</span>':`<b>AI 风险审核：需改写后发送</b><span>检测到：${result.labels.join('、')}。请使用中性记录确认、既有医嘱和线下就医提示。</span><button id="rewriteQueueMessage">一键改写为合规表述</button>`}
+ function chatCompliantRewrite(){return '已收到您的信息。请继续按既有医嘱记录变化；如不适加重或出现明显异常，请及时联系团队或线下就医。'}
+ function renderChatCompliance(){const box=$('#chatCompliance');if(!box)return;const text=$('#chatText').value.trim();if(!text){box.className='compliance';box.innerHTML='<b>AI 风险审核：等待输入</b><span>发送前将检查诊断、用药处方和绝对化表述。</span>';return}const result=checkReply(text);box.className=`compliance ${result.ok?'ok':'warn'}`;box.innerHTML=result.ok?'<b>AI 风险审核：表述可发送</b><span>未发现远程诊断、处方/用药指导或绝对化结论。</span>':`<b>AI 风险审核：需改写后发送</b><span>检测到：${result.labels.join('、')}。请使用中性记录确认、既有医嘱和线下就医提示。</span><button id="rewriteChatMessage">一键改写为合规表述</button>`}
+ function renderChat(){const p=patients.find(x=>x.id===activeChat)||patients[0],messages=s.chats[activeChat]||[];$('#chatPatientName').textContent=`与${p.name}聊天`;$('#chatPatientMeta').textContent=`${p.code} · ${p.day} · 医生可主动发起会话`;$('#chatThread').innerHTML=`<div class="chat-date">本地模拟会话 · 今日</div>${messages.length?messages.map(m=>`<div class="chat-message ${m.from==='director'?'mine':''}"><span class="chat-sender">${m.from==='director'?'卢伶俐主任':p.name}</span><div class="chat-bubble">${m.text}</div><span class="chat-time">${m.time}</span></div>`).join(''):'<p class="chat-date">暂无历史消息，可由卢伶俐主任主动发起会话。</p>'}`;renderChatCompliance()}
+ function renderReplyCompliance(){const box=$('#replyCompliance');if(!box||document.activeElement===$('#replyText'))return;const result=checkReply($('#replyText').value);box.className=`compliance ${result.ok?'ok':'warn'}`;box.innerHTML=result.ok?'<b>AI 合规审核：表述可发送</b><span>避免远程诊断、处方/用药指导及确定性结论。</span>':`<b>AI 合规审核：建议改写</b><span>检测到：${result.labels.join('、')}。请改为记录确认、继续观察和就医提示等中性表述。</span><button id="rewriteReply">一键改写为合规表述</button>`}
+ function svgChart({ticks,path,unit,note}){const y=i=>20+i*(112/(ticks.length-1));return `<text x="7" y="12" fill="#776f6b" font-size="9">${unit}</text>${ticks.map((t,i)=>`<path d="M45 ${y(i)}H322" stroke="#eadbd3" stroke-dasharray="4 4"/><text x="37" y="${y(i)+3}" text-anchor="end" fill="#776f6b" font-size="9">${t}</text>`).join('')}<path d="M45 20V132M45 132H322" stroke="#cfc4bb"/><path d="${path}" fill="none" stroke="#cc5c3a" stroke-width="4" stroke-linecap="round"/><circle cx="45" cy="34" r="3.5" fill="#cc5c3a"/><circle cx="322" cy="130" r="3.5" fill="#cc5c3a"/><text x="45" y="153" fill="#776f6b" font-size="9">术后第1天</text><text x="278" y="153" fill="#776f6b" font-size="9">术后第30天</text>`}
+ function chart(metric){const c={pain:{title:'疼痛评分趋势',note:'NRS 疼痛评分的队列中位趋势，仅作 Demo 展示。',ticks:['10','8','6','4','2','0'],path:'M45 31 C95 43 124 67 166 85 S256 116 322 130',unit:'NRS 疼痛评分（分）'},activity:{title:'上肢活动度趋势',note:'上肢外展角度的队列中位趋势，仅作 Demo 展示。',ticks:['180','135','90','45','0'],path:'M45 126 C92 116 125 101 166 82 S256 44 322 29',unit:'上肢外展角度（°）'},drain:{title:'乳房引流量趋势',note:'乳房引流量的队列中位趋势，仅带管患者纳入。',ticks:['120','90','60','30','0'],path:'M45 27 C92 48 124 66 166 86 S256 113 322 130',unit:'24小时乳房引流量（mL）'},recovery:{title:'主观恢复趋势',note:'主观恢复评分的队列中位趋势，不等同于正式量表。',ticks:['100','75','50','25','0'],path:'M45 128 C94 117 123 100 166 83 S256 46 322 31',unit:'主观恢复评分（分）'}}[metric];$('#metricTitle').textContent=c.title;$('#metricNote').textContent=c.note;$('#metricChart').innerHTML=svgChart(c)}
+ function renderDetail(){const p=patientCases[activePatient];const status=s.caseStatus[activePatient]||'未处理';$('#detailCode').textContent=`${p.code} · ${p.day}`;$('#detailName').textContent=`${p.name} · ${p.risk}风险`;$('#detailProcedure').textContent=p.procedure;$('#riskSummary').textContent=p.summary;$('#riskLabel').textContent=status==='未处理'?`${p.risk} ${p.risk==='R1'?'紧急':'优先'}`:status;$('#riskLabel').className=`badge ${status==='已排除'?'green':badge(p.risk)}`;$('#detailData').innerHTML=p.data.map(x=>`<div class="datum"><b>${x[0]}</b><span>${x[1]}</span></div>`).join('');$('#detailRecords').innerHTML=p.records.map(x=>`<div class="record"><b>${x[0]}</b><p>${x[1]}</p></div>`).join('');$('#replyText').value=p.reply;$('#detailChart').innerHTML=svgChart(p.chart);$('#detailChartNote').textContent=p.chart.note}
+ const procedureOptions=['良性肿瘤切除术','乳腺癌根治术','乳腺癌根治术+乳房重建术（非大网膜）','乳腺癌根治术+腔镜大网膜乳房重建术'];
+ const queueGroup=()=>s.group==='all'?patients:patients.filter(p=>p.group===s.group);
+ const queueFilter=()=>{const query=(s.queueQuery||'').trim().toLowerCase();return queueGroup().filter(p=>!query||p.name.toLowerCase().includes(query))};
+ function renderQueue(){const filter=queueFilter(),targets=patients.filter(p=>s.selected.includes(p.id)),allVisible=filter.length&&filter.every(p=>s.selected.includes(p.id));$('#patientSearch').value=s.queueQuery||'';$$('#queueTabs button').forEach(b=>b.classList.toggle('on',b.dataset.group===s.group));$('#selectVisible').textContent=allVisible?'取消全选当前结果':'全选当前结果';$('#queueSelectedCount').textContent=targets.length;$('#queueRecipientSummary').textContent=targets.length?`本次将推送给 ${targets.length} 位患者：${targets.map(p=>p.name).join('、')}`:'请先在队列中勾选患者。';$('#queueRecipients').innerHTML=targets.length?targets.map(p=>`<div class="check-patient"><span class="avatar">${p.name[0]}</span><span>${p.name} · ${p.day}</span><small>${p.risk}</small></div>`).join(''):'';$('#queueList').innerHTML=filter.length?filter.map(p=>{if(p.group!=='preop')return `<div class="queue-patient"><label class="patient"><input type="checkbox" data-pick="${p.id}" ${s.selected.includes(p.id)?'checked':''}><span class="avatar">${p.name[0]}</span><span class="copy"><b>${p.name} · ${p.code}</b><small>${p.day} · ${p.desc}</small></span><em class="badge ${badge(p.risk)}">${p.risk}</em></label><button class="chat-entry" data-chat="${p.id}">发起聊天</button></div>`;const selected=s.procedures[p.id]||'',confirmed=!!s.procedureConfirmed[p.id],options=['<option value="">请选择术式</option>',...procedureOptions.map(x=>`<option value="${x}" ${selected===x?'selected':''}>${x}</option>`)].join('');return `<div class="preop-card"><label class="patient"><input type="checkbox" data-pick="${p.id}" ${s.selected.includes(p.id)?'checked':''}><span class="avatar">${p.name[0]}</span><span class="copy"><b>${p.name} · ${p.code}</b><small>${p.day} · ${confirmed?'术前教育已解锁':'待确认术式'}</small></span><em class="badge ${confirmed?'green':'yellow'}">${confirmed?'已确认':'待确认'}</em></label><div class="procedure-box"><label for="procedure-${p.id}">选择术式</label><select id="procedure-${p.id}" data-procedure="${p.id}" aria-label="${p.name}选择术式">${options}</select><button class="${confirmed?'done':''}" data-confirm-procedure="${p.id}">${confirmed?'已确认 · 重新确认术式':'确认术式并解锁术前教育'}</button>${confirmed?'<span class="procedure-note">已向患者端同步：您的医生已为您确认术式，术前教育已自动解锁。</span>':''}</div><button class="chat-entry" data-chat="${p.id}">发起聊天</button></div>`}).join(''):'<div class="queue-empty">未找到匹配的患者</div>';renderQueueMessageCompliance()}
+ function qualityBadge(x){return x.quality==='需优化'?'<em class="badge yellow">需优化</em>':'<em class="badge green">回答良好</em>'} function render(){const r=risks(),homeReview=reviewItems.map((x,i)=>`<button class="review-row" data-review="${x.id}"><span class="review-index">${i+1}</span><span class="copy"><b>${x.q}</b><small>${x.person}<span class="home-review-answer">AI 原回答：${x.a}</span></small></span>${qualityBadge(x)}</button>`).join('');$('#statRisk').textContent=r.length;$('#statReview').textContent=reviewItems.length;$('#reviewHeroCount').textContent=reviewItems.length;$('#riskTodo').innerHTML=r.map(p=>`<button class="patient" data-patient="${p.id}"><span class="avatar">${p.name[0]}</span><span class="copy"><b>${p.name}｜${p.day}｜${p.risk}风险</b><small>${p.desc}</small></span><em class="badge ${badge(p.risk)}">${p.risk==='R1'?'紧急':'优先'}</em></button>`).join('');$('#homeReviewList').innerHTML=homeReview;$('#reviewList').innerHTML=reviewItems.map((x,i)=>`<button class="review-row" data-review="${x.id}"><span class="review-index">${i+1}</span><span class="copy"><b>${x.q}</b><small>${x.person} · AI 回答质量抽检</small></span>${qualityBadge(x)}</button>`).join('');$('#homeRiskPanel').classList.toggle('show',s.homePanel==='risk');$('#homeReviewPanel').classList.toggle('show',s.homePanel==='review');$('#riskToggle').classList.toggle('open',s.homePanel==='risk');$('#reviewToggle').classList.toggle('open',s.homePanel==='review');$('#riskToggle').setAttribute('aria-expanded',s.homePanel==='risk');$('#reviewToggle').setAttribute('aria-expanded',s.homePanel==='review');const item=reviewItems.find(x=>x.id===activeReview)||reviewItems[0];$('#reviewSubject').textContent=`${item.person} · ${item.quality}`;$('#reviewQuestion').textContent=item.q;$('#reviewAnswer').textContent=item.a;if(document.activeElement!==$('#correctText'))$('#correctText').value=item.correct;$$('#mainTags button').forEach(b=>b.classList.toggle('pick',b.dataset.tag===tag));$$('#metricTabs button').forEach(b=>b.classList.toggle('on',b.dataset.metric===s.metric));chart(s.metric);renderQueue();renderChat();const labels={system:['系统推送','log-system'],reply:['团队回复','log-reply'],action:['处理动作','log-action']};$('#logs').innerHTML=s.logs.map(a=>`<div class="table-row"><b>${a.t}</b><span><i class="log-kind ${labels[a.kind][1]}">${labels[a.kind][0]}</i><br>${a.x}</span></div>`).join('');renderDetail();renderReplyCompliance()}
+ document.addEventListener('click',e=>{const n=e.target.closest('[data-go]');if(n){go(n.dataset.go);return}const homeToggle=e.target.closest('#riskToggle,#reviewToggle');if(homeToggle){const next=homeToggle.id==='riskToggle'?'risk':'review';s.homePanel=s.homePanel===next?'none':next;save();return}if(e.target.closest('#clearSelection')){s.selected=[];save();return}if(e.target.closest('#selectVisible')){const visible=queueFilter();const allVisible=visible.length&&visible.every(p=>s.selected.includes(p.id));s.selected=allVisible?s.selected.filter(id=>!visible.some(p=>p.id===id)):[...new Set([...s.selected,...visible.map(p=>p.id)])];save();return}const procedureConfirm=e.target.closest('[data-confirm-procedure]');if(procedureConfirm){const id=procedureConfirm.dataset.confirmProcedure,p=patients.find(x=>x.id===id),procedure=s.procedures[id];if(!procedure){modal('请先选择术式',`请为${p.name}从下拉框选择拟确认的术式。`,'!');return}s.procedureConfirmed[id]=true;addLog('system',`系统推送：已向${p.name}患者端同步消息“您的医生已为您确认术式，术前教育已自动解锁。”`);save();modal('术式已确认','消息和相关术前教育已推送患者端');return}const chat=e.target.closest('[data-chat]');if(chat){activeChat=chat.dataset.chat;s.chats[activeChat]||=[];render();go('chat');return}const row=e.target.closest('[data-patient]');if(row){activePatient=row.dataset.patient;render();go('detail');return}const rv=e.target.closest('[data-review]');if(rv){activeReview=rv.dataset.review;tag=reviewItems.find(x=>x.id===activeReview).quality==='回答良好'?'正确':'错误';render();go('reviewDetail');return}const p=e.target.closest('[data-pick]');if(p){const id=p.dataset.pick;s.selected=p.checked?[...new Set([...s.selected,id])]:s.selected.filter(x=>x!==id);save();return}const g=e.target.closest('#queueTabs [data-group]');if(g){s.group=g.dataset.group;save();return}const mt=e.target.closest('#metricTabs [data-metric]');if(mt){s.metric=mt.dataset.metric;save();return}const t=e.target.closest('#queueTemplates [data-template]');if(t){const map={复诊提醒:'请您按预约时间携带复诊沟通卡来院复诊。',每日记录提醒:'请在今日方便时完成术后记录，我们会持续关注您的恢复。',风险安全提醒:'您的近期记录需要优先关注，请勿自行处理；如不适明显或加重，请及时联系团队或线下就医。'};$('#queueText').value=map[t.dataset.template];renderQueueMessageCompliance();return}if(e.target.closest('#rewriteQueueMessage')){$('#queueText').value=queueCompliantRewrite();addLog('system','AI 风险审核：队列群发消息已一键改写为合规表述（本地模拟）。');save();return}if(e.target.closest('#rewriteChatMessage')){$('#chatText').value=chatCompliantRewrite();addLog('system','AI 风险审核：卢伶俐主任的聊天消息已一键改写为合规表述（本地模拟）。');save();return}if(e.target.closest('#rewriteReply')){const p=patientCases[activePatient];$('#replyText').value=compliantRewrite();addLog('system',`AI 合规审核：${p.name}的高风险回复已一键改写为合规表述（本地模拟).`);renderReplyCompliance()}});
+ document.addEventListener('change',e=>{if(e.target.matches('[data-procedure]')){const id=e.target.dataset.procedure;s.procedures[id]=e.target.value;s.procedureConfirmed[id]=false;save()}});document.addEventListener('input',e=>{if(e.target.matches('#queueText')){renderQueueMessageCompliance();return}if(e.target.matches('#chatText')){renderChatCompliance();return}if(!e.target.matches('#patientSearch'))return;s.queueQuery=e.target.value;const caret=e.target.selectionStart;renderQueue();const field=$('#patientSearch');field.focus();field.setSelectionRange(caret,caret)});
+ $('#replyText').addEventListener('input',()=>{const result=checkReply($('#replyText').value);const box=$('#replyCompliance');box.className=`compliance ${result.ok?'ok':'warn'}`;box.innerHTML=result.ok?'<b>AI 合规审核：表述可发送</b><span>避免远程诊断、处方/用药指导及确定性结论。</span>':`<b>AI 合规审核：建议改写</b><span>检测到：${result.labels.join('、')}。请改为记录确认、继续观察和就医提示等中性表述。</span><button id="rewriteReply">一键改写为合规表述</button>`});
+ $('#sendReply').onclick=()=>{const p=patientCases[activePatient],text=$('#replyText').value.trim()||p.reply,result=checkReply(text);if(!result.ok){renderReplyCompliance();modal('请先完成合规改写',`检测到${result.labels.join('、')}；请点击“一键改写为合规表述”或手动调整后再发送。`,'!');return}s.caseStatus[activePatient]='已回复';addLog('reply',`回复 ${p.name}：${text}`);save();modal('已发送回复',`${p.name}患者端将收到本次补充。`)};$('#sendChat').onclick=()=>{const p=patients.find(x=>x.id===activeChat),text=$('#chatText').value.trim(),result=checkReply(text);if(!text){modal('请填写消息内容','请输入消息后，系统才可进行 AI 风险审核。','!');return}if(!result.ok){renderChatCompliance();modal('请先完成合规改写',`检测到${result.labels.join('、')}；请点击“一键改写为合规表述”或手动调整后再发送。`,'!');return}s.chats[activeChat]||=[];s.chats[activeChat].push({from:'director',text,time:new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit',hour12:false})});addLog('reply',`卢伶俐主任向${p.name}主动发起聊天消息：${text}`);$('#chatText').value='';save();modal('消息已发送',`已以“卢伶俐主任”身份向${p.name}写入本地模拟聊天记录。`)};$('#confirmComp').onclick=()=>{const p=patientCases[activePatient];if(s.caseStatus[activePatient]!=='已确认并发症'){s.confirmed++;s.suspected=Math.max(0,s.suspected-1);s.caseStatus[activePatient]='已确认并发症';addLog('action',`${p.name}风险事件标记为“确认并发症”，恢复看板已更新。`);save()}modal('已确认并发症','已更新看板与患者档案的模拟状态。','!')};$('#excludeComp').onclick=()=>{const p=patientCases[activePatient];if(s.caseStatus[activePatient]!=='已排除'){s.excluded++;s.caseStatus[activePatient]='已排除';addLog('action',`${p.name}风险事件标记为“排除并发症”。`);save()}modal('已排除并发症','已保留处理日志，并更新队列状态。')};$('#observe').onclick=()=>{const p=patientCases[activePatient];s.caseStatus[activePatient]='继续观察';addLog('action',`${p.name}风险事件标记为“继续观察”。`);save();modal('已标记继续观察','患者端记录将继续进入随访队列。')};
+ $('#mainTags').onclick=e=>{if(e.target.dataset.tag){tag=e.target.dataset.tag;render()}};$('#answerMic').onclick=()=>{const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('#correctText').value='【模拟语音转写】请按既有医嘱记录变化，并在症状加重时及时联系团队或线下就医。';$('#answerVoiceState').textContent='当前浏览器未提供语音识别，已填入可编辑的模拟语音转写。';return}const rec=new SR();rec.lang='zh-CN';rec.onresult=e=>{$('#correctText').value=e.results[0][0].transcript;$('#answerVoiceState').textContent='语音已转为文字，可继续编辑后提交。'};rec.onerror=()=>{$('#answerVoiceState').textContent='语音识别未完成，请改用文字输入。'};rec.start();$('#answerVoiceState').textContent='正在聆听，请说出正确回答…'};
+ $('#submitReview').onclick=()=>{const item=reviewItems.find(x=>x.id===activeReview);if(!s.reviewed.includes(activeReview)){s.reviewed.push(activeReview);addLog('reply',`已完成 ${item.person} 的回答复核，标注为“${tag}”，正确回答已同步至患者端模拟会话。`);save()}modal('标注已提交','已更新待复核列表，正确回答和结构化标注已写入模拟日志。');go('review')};
+ $('#queueRecordVoice').onclick=async()=>{if(mediaRecorder&&mediaRecorder.state==='recording'){mediaRecorder.stop();$('#queueRecordVoice').textContent='开始录制语音';return}if(!navigator.mediaDevices?.getUserMedia){$('#queueVoiceState').textContent='当前浏览器不支持本地录音。仍可发送通过 AI 审核的文字消息。';return}try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];mediaRecorder=new MediaRecorder(stream);mediaRecorder.ondataavailable=e=>chunks.push(e.data);mediaRecorder.onstop=()=>{const blob=new Blob(chunks,{type:'audio/webm'});if(voiceUrl)URL.revokeObjectURL(voiceUrl);voiceUrl=URL.createObjectURL(blob);$('#queueVoicePlayer').src=voiceUrl;$('#queueVoicePlayer').style.display='block';s.voiceReady=true;$('#queueVoiceState').textContent='语音已录制。请填写或核对文字内容后完成 AI 风险审核。';stream.getTracks().forEach(t=>t.stop())};mediaRecorder.start();$('#queueRecordVoice').textContent='停止录制';$('#queueVoiceState').textContent='正在本地录音，再次点击停止。'}catch{$('#queueVoiceState').textContent='未获得麦克风权限。仍可发送通过 AI 审核的文字消息，Demo 不会真实外发。'}};
+ $('#sendQueueBroadcast').onclick=()=>{const target=patients.filter(p=>s.selected.includes(p.id)),text=$('#queueText').value.trim();if(!target.length){modal('请先选择患者','请在患者队列中勾选一位或多位患者后再发送。','!');return}if(!text){modal('请填写待发送文字','文字内容是 AI 风险审核依据；语音消息也需填写或核对文字内容。','!');return}const result=checkReply(text);if(!result.ok){addLog('system',`AI 风险审核拦截队列消息：${result.labels.join('、')}。`);save();modal('请先完成合规改写',`检测到${result.labels.join('、')}；请点击“一键改写为合规表述”或手动调整后再发送。`,'!');return}addLog('system',`AI 风险审核通过：面向 ${target.length} 位患者的队列消息可发送。`);addLog('system',`系统已向 ${target.map(p=>p.name).join('、')} 写入${s.voiceReady?'语音/文字':'文字'}消息推送状态（本地模拟）。`);s.voiceReady=false;save();modal('群发消息已推送',`已完成 AI 风险审核并向 ${target.length} 位已选患者写入模拟消息状态；不会真实外发。`)};
+ $('#closeModal').onclick=()=>$('#modal').classList.remove('show');render();
+})();
+</script></body></html>
